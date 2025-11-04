@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Server</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .movement{
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: #2a3439;
+            color: aliceblue;
+            font-size: 25px;
+            border-radius: 3px;
+        }
+        .movement:hover{
+            background-color: #304047;
+        }
+        .movement:active{
+            background-color: #1a2124;
+        }
+
+        #throttle{
+            -webkit-appearance: none;
+            appearance: none;
+            width:40%;
+            height: 25px;
+            outline: none;
+            background-color: #b8b8b8;
+            border-radius: 30px;
+        }
+
+        #throttle::-webkit-slider-thumb{
+            -webkit-appearance: none;
+            appearance: none;
+            width:25px;
+            height:25px;
+            background-color: #2a3439;
+            border-radius: 30px;
+        }
+        #throttle::-webkit-slider-thumb:hover{
+            background-color: #304047;
+            cursor: pointer;
+        }
+        #throttle::-webkit-slider-thumb:active{
+            background-color: #1a2124;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id = buttons>
+
+        <button id="forward" class="movement" onclick="forward()">↑</button>
+        <button id="backward" class="movement" onclick="backward()">↓</button>
+        <button id="left" class="movement" onclick="left()">←</button>
+        <button id="right" class="movement" onclick="right()">→</button>
+
+    </div>
+
+    <div id="sliders">
+
+        <input type="range" id="throttle" min="0" max="100" value="50">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+
+        //button stuff
+        function forward(){
+            $.ajax({
+                type: "POST",
+                url: "/move_forward",
+                data: "Go forward"
+            })
+            console.log("Forward")
+        }
+
+        function backward(){
+                $.ajax({
+                type: "POST",
+                url: "/move_backward",
+                data: "Go backward"
+            })
+            console.log("Forward")
+        }
+
+        function left(){
+            $.ajax({type: "POST", url: "/move_left", data: "Move Left"})
+        }
+
+        function right(){
+            $.ajax({type: "POST", url: "/move_right", data: "Move Right"})
+        }
+
+        //slider stuff
+        const slider = document.getElementById("throttle");
+
+        slider.oninput = function(){
+
+            $.ajax({url: "/throttle", type: "POST", data: `Throttle: ${slider.value}`})
+
+        }
+
+    </script>
+   
+</body>
+</html>

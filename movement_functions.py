@@ -1,0 +1,1 @@
+# I wanted to do my movement functions after I got my header pins soldered onto my pi so I could verify if the robot runs properly
