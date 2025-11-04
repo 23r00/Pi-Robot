@@ -7,7 +7,3 @@
 3. How to route in flask
 4. How to use AJAX (asynchronous JavaScript and XML) to send a POST request without having the wenpage reload
 5. How to create and delete hotspots on Linux
-
-## What I will work on for next project:
-
-1. Better time management: I waited until the last second to get the webpage working
