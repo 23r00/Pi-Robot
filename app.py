@@ -3,9 +3,11 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
+def index():
     return render_template("index.html")
- 
+
+
+# Direction Buttons
 @app.route("/move_forward", methods=["POST"])
 def move_forward():
     if request.method == "POST":
@@ -30,6 +32,8 @@ def move_right():
         print(request.form)
         return ('', 204)
 
+
+# Throttle Slider
 @app.route("/throttle", methods = ["POST"])
 def throttle():
     if request.method == "POST":
