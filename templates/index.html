@@ -82,26 +82,32 @@
                 url: "/move_forward",
                 data: "Go forward"
             })
-            console.log("Forward")
         }
 
+        
         function backward(){
                 $.ajax({
                 type: "POST",
                 url: "/move_backward",
                 data: "Go backward"
             })
-            console.log("Forward")
         }
 
+        
         function left(){
-            $.ajax({type: "POST", url: "/move_left", data: "Move Left"})
+            $.ajax({type: "POST", 
+                    url: "/move_left", 
+                    data: "Move Left"})
         }
 
+        
         function right(){
-            $.ajax({type: "POST", url: "/move_right", data: "Move Right"})
+            $.ajax({type: "POST", 
+                    url: "/move_right", 
+                    data: "Move Right"})
         }
 
+        
         //slider stuff
         const slider = document.getElementById("throttle");
 
